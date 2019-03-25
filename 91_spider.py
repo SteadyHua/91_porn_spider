@@ -27,11 +27,12 @@ while flag<=100:
     for key in viewkey:
         headers={'Accept-Language':'zh-CN,zh;q=0.9','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36','X-Forwarded-For':random_ip(),'referer':page_url,'Content-Type': 'multipart/form-data; session_language=cn_CN'}
         video_url=[]
-        img_url=[]
         base_req=requests.get(url=base_url+key,headers=headers)
-        video_url=re.findall(r'<source src="(.*?)" type=\'video/mp4\'>',str(base_req.content,'utf-8',errors='ignore'))
+        ifm=re.findall('<iframe width="560" height="315" src="(.*?)" frameborder="0" allowfullscreen></iframe>',base_req.text)
+        bases_req = requests.get(ifm[0], headers=headers)
+        video_url=re.findall(r'<source src="(.*?)" type=\'video/mp4\'>',str(bases_req.content,'utf-8',errors='ignore'))
         tittle=re.findall(r'<div id="viewvideo-title">(.*?)</div>',str(base_req.content,'utf-8',errors='ignore'),re.S)
-        img_url=re.findall(r'poster="(.*?)"',str(base_req.content,'utf-8',errors='ignore'))
+        #print(video_url)
         try:
             t=tittle[0]
             tittle[0]=t.replace('\n','')
@@ -42,7 +43,6 @@ while flag<=100:
             try:
                 os.makedirs(str(t))
                 print('开始下载:'+str(t))
-                download_img(str(img_url[0]),str(t))
                 download_mp4(str(video_url[0]),str(t))
                 print('下载完成')
             except:
