@@ -8,6 +8,11 @@ pip3 install requests
 ```bash
 python3 91_spider.py
 ```
+# 视频地址加密解决办法：
+暂时使用的是html5分享的视频无加密，可以直接获取视频地址。
+目前爬虫已可以正常使用。
+
+
 # 关于新增cookie的使用
 在同目录下创建一个cookie.txt文件
 里面内容为cookie，例如：
