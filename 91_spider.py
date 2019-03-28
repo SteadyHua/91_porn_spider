@@ -23,7 +23,7 @@ while flag<=100:
     base_url='http://91porn.com/view_video.php?viewkey='
     page_url='http://91porn.com/v.php?next=watch&page='+str(flag)
     get_page=requests.get(url=page_url)
-    viewkey=re.findall(r'<a target=blank href="http://91porn.com/view_video.php\?viewkey=(.*)&page=.*&viewtype=basic&category=.*?">\n                    <img ',str(get_page.content,'utf-8',errors='ignore'))
+    viewkey=re.findall(r'http://91porn.com/view_video.php?viewkey=(.*)&page=.*&viewtype=basic&category=.*?" title=',str(get_page.content,'utf-8',errors='ignore'))
     for key in viewkey:
         headers={'Accept-Language':'zh-CN,zh;q=0.9','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36','X-Forwarded-For':random_ip(),'referer':page_url,'Content-Type': 'multipart/form-data; session_language=cn_CN'}
         video_url=[]
