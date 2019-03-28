@@ -23,7 +23,7 @@ while flag<=100:
     base_url='http://91porn.com/view_video.php?viewkey='
     page_url='http://91porn.com/v.php?next=watch&page='+str(flag)
     get_page=requests.get(url=page_url)
-    viewkey=re.findall(r'http://91porn.com/view_video.php?viewkey=(.*)&page=.*&viewtype=basic&category=.*?" title=',str(get_page.content,'utf-8',errors='ignore'))
+    viewkey=re.findall('http://91porn.com/view_video.php\?viewkey=(.*?)&page=.*?&viewtype=basic&category=.*?" title=',get_page.text)
     for key in viewkey:
         headers={'Accept-Language':'zh-CN,zh;q=0.9','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36','X-Forwarded-For':random_ip(),'referer':page_url,'Content-Type': 'multipart/form-data; session_language=cn_CN'}
         video_url=[]
@@ -32,24 +32,23 @@ while flag<=100:
         bases_req = requests.get(ifm[0], headers=headers)
         video_url=re.findall(r'<source src="(.*?)" type=\'video/mp4\'>',str(bases_req.content,'utf-8',errors='ignore'))
         tittle=re.findall(r'<div id="viewvideo-title">(.*?)</div>',str(base_req.content,'utf-8',errors='ignore'),re.S)
-        #print(video_url)
         try:
             t=tittle[0]
             tittle[0]=t.replace('\n','')
             t=tittle[0].replace(' ','')
-        except IndexError:
-            pass
+        except Exception as e:
+            print(e)
         if os.path.exists(str(t))==False:
             try:
                 os.makedirs(str(t))
                 print('开始下载:'+str(t))
+             
                 download_mp4(str(video_url[0]),str(t))
                 print('下载完成')
-            except:
-                pass
+            except Exception as e:
+                print(e)
         else:
             print('已存在文件夹,跳过')
             time.sleep(2)
     flag=flag+1
     print('此页已下载完成，下一页是'+str(flag))
-    
