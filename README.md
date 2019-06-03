@@ -3,6 +3,8 @@
 # python所需库：
 ```bash
 pip3 install requests
+#js解析需要js2py
+pip3 install js2py
 ```
 # 使用方法：
 ```bash
