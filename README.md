@@ -34,4 +34,4 @@ __cfduid=xxx; __dtsu=xxx; AJSTAT_ok_times=xxx; __uid=xxx; __utmz=|utmccn=(organi
 
 # 关于作者
 网站：https://eqblog.com
-邮箱：sys@t667.com
+邮箱：i@t667.com 
