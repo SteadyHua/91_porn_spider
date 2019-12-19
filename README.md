@@ -1,5 +1,11 @@
 
-# 91主站目前开启了cloudflare，采用了recaptcha验证，脚本可能无法正常使用。
+# 91主站目前开启了cloudflare，采用了recaptcha验证
+
+目前已增加绕过recaptcha功能，需要anti-captcha.com账户。
+
+增加相应余额后，至此网站的settings->api setup处获取API。
+
+注意：此站非免费，并且不支持国内主流支付方式
 
 
 # 91_porn_spider使用注意事项：
