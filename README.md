@@ -1,3 +1,7 @@
+
+# 91主站目前开启了cloudflare，采用了recaptcha验证，脚本可能无法正常使用。
+
+
 # 91_porn_spider使用注意事项：
 `本脚本仅支持python3`
 # python所需库：
