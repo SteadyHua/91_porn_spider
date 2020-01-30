@@ -100,7 +100,7 @@ def main():
             try:
                 header=req.headers
                 header['X-Forwarded-For']=random_ip()
-                header['Accept-Language']="Accept-Language: zh-CN,zh;q=0.9"
+                header['Accept-Language']="zh-CN,zh;q=0.9"
                 base_req = req.get(url=base_url + key,headers=header)
                 #print(base_req.text)
                 ifm=re.findall('strencode\((.*?)\)',base_req.text)
