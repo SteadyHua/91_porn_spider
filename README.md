@@ -13,6 +13,7 @@
 # python所需库：
 ```bash
 pip3 install requests
+pip3 install python3_anticaptcha
 #js解析需要js2py
 pip3 install js2py
 ```
